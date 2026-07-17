@@ -15,5 +15,16 @@ class FileReader:
         return self.contenu
     
 liste_fichiers = glob.glob("*.md") 
-# utilisation de glob pour chercher tous les fichiers qui se termine par .md 
-# et les stocker dans la variable liste_fichiers
+# On récupère une liste de tous les fichiers .md dans le répertoire courant. Mais il faut 
+# se demander s'il y en a ou pas... donc on va vérifier si la liste est vide ou non.
+if len(liste_fichiers) == 0:
+    print("Aucun fichier .md trouvé dans le répertoire courant.")
+else:
+    print(f"Fichiers .md trouvés : {liste_fichiers}")
+    lecteur = FileReader(liste_fichiers[0])
+    print(lecteur.read_file())
+
+# ainsi, si la longueur de la liste est de zero (nulle), on affiche un message d'erreur. 
+# Sinon, on crée une instance de FileReader avec le premier fichier de la liste qui sera lu 
+# et son contenu affiché. Cela permet de gérer le cas où 
+# il n'y a pas de fichiers .md dans le répertoire courant.
