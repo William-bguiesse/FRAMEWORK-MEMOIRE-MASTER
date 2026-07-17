@@ -1,17 +1,33 @@
-# Il faut reflechir à une methode pour créer un lecteur de fichiers markdown ou JSON. 
-# pour commencer, le lecteur doit savoir quoi chercher. On pourrait envisager : 
-fichier = "sample.md"
-# On aurait donc ici stocké le fichier dans une variable qu'on mettra plus dans le lecteur.
-# il faudrait ensui utiliser une commande lisant son contenu. Dans la documentation de python,
-#  on peut utiliser la fonction open() pour ouvrir le fichier et lire son contenu.
+# On pourrait envisager un plan pour ce fichier du genre :
+# 1. une classe qui gere le fichier (son repertoire)
+# 2. une classe qui lit le fichier et retourne son contenu
+# 3. une classe pour l'enregistrement du contenu dans une variable
+    
+class FileReader:
+    def __init__(self, fichier: str):
+        self.fichier = fichier
+        self.contenu = None
 
-with open(fichier, 'r') as f:
-    contenu = f.read()
+# ce premier bloc de code met en place une classe FileReader
+# qui prend en parametre le nom du fichier a lire et initialise une variable 
+# pour stocker le contenu du fichier.
 
-# avec cette méthode, on peut lire le contenu du fichier et 
-# le stocker dans une variable.
+    def read_file(self) -> str:
+        with open(self.fichier, 'r', encoding='utf-8') as file:
+            self.contenu = file.read()
+        return self.contenu
+    
+# ce second bloc de code utilise une méthode pour lire le contenu du fichier 
+# et le stocker dans la variable contenu, puis il retourne son contenu.
+    
+if __name__ == "__main__":
+    lecteur = FileReader("sample.md")
+    print(lecteur.read_file())
 
-# Rien que pour le moment, on peut afficher le contenu du fichier pour vérifier que tout fonctionne correctement.
-print(contenu)
+# enfin, dans ce dernier bloc de code, on crée une instance de la classe FileReader 
+# avec le nom du fichier sample.md et on affiche le contenu du fichier 
+# qui est lu par la méthode read_file défini auparavant.
 
-# on va commit ceci pour le moment, on essayera d'ameliorer certaine choses plus tard.
+# ainsi, dans ce fichier lecteur.py, nous avons mis en place une structure de base 
+# pour lire un fichier texte et stocker son contenu dans une variable qui pourra servir
+# pour le second fichier python chargé de la conversion.
