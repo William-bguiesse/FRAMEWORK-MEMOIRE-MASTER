@@ -19,9 +19,13 @@ else:
 # ici, on crée une lsite des fichiers markdown, et avec enumerate, on indexe un numero à chacun
 # pour faciliter le choix pour l'utilisateur dans la selection de ces derniers. 
 # 1. On va utiliser "input" pour que l'utilisateur tape le numero qui est indexé à chaque fichier. 
-    choix = input("\nEntrez le numéro du fichier à convertir : ")
-# Dans la variable "choix", on a donc stocké ce que l'utilisateur a écrit.
-# le numero tapé par l'utilisateur doit être transformé en entier
-    index_choisi = int(choix) - 1  # -1 car les listes Python commencent à 0.
-    fichier_selectionne = fichiers_valides[index_choisi]
-    print(f"Vous avez choisi : {fichier_selectionne}")
+# 1. On demande le numéro
+    choix = input("\nEntrez le numéro du fichier : ")
+
+    # 2. On vérifie si c'est un chiffre ET si ce chiffre est dans la liste
+    if choix.isdigit() and 1 <= int(choix) <= len(fichiers_valides):
+        fichier_selectionne = fichiers_valides[int(choix) - 1]
+        print(f"Fichier choisi : {fichier_selectionne}")
+
+    else:
+        print("Choix invalide. Veuillez relancer et entrer un numéro de la liste.")
