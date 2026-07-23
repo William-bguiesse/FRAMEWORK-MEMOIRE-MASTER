@@ -18,3 +18,5 @@ else:
         print(f"{index}. {fichier}") 
 # ici, on crée une lsite des fichiers markdown, et avec enumerate, on indexe un numero à chacun
 # pour faciliter le choix pour l'utilisateur dans la selection de ces derniers. 
+# 1. On va utiliser "input" pour que l'utilisateur tape le numero qui est indexé à chaque fichier. 
+    choix = input("\nEntrez le numéro du fichier à convertir : ")
