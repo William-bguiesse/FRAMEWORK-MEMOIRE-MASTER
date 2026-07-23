@@ -20,3 +20,8 @@ else:
 # pour faciliter le choix pour l'utilisateur dans la selection de ces derniers. 
 # 1. On va utiliser "input" pour que l'utilisateur tape le numero qui est indexé à chaque fichier. 
     choix = input("\nEntrez le numéro du fichier à convertir : ")
+# Dans la variable "choix", on a donc stocké ce que l'utilisateur a écrit.
+# le numero tapé par l'utilisateur doit être transformé en entier
+    index_choisi = int(choix) - 1  # -1 car les listes Python commencent à 0.
+    fichier_selectionne = fichiers_valides[index_choisi]
+    print(f"Vous avez choisi : {fichier_selectionne}")
