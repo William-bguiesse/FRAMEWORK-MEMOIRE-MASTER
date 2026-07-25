@@ -39,6 +39,12 @@ if choix.isdigit() and 1 <= int(choix) <= len(fichiers_valides):
 # On affiche ici le résultat du fichier converti.
     print("\n--- Résultat HTML ---")
     print(html)
+# maintenant, on ne veut pas juste une sortie print dans le terminal, on veut un fichier HTML. 
+# L'objectif sera de creer une variable qui stockera le fichier qui a été converti.
+# Avec la commande "rplit" on dit à python : 
+# DECOUPE AU PREMIER POINT QUE TU VOIS EN PARTANT DE LA DROITE ET GARDE LE PREMIER ELEMENT 
+# PUIS, AJOUTE ".htm" A LA FIN DU MOT.
+    nom_de_sortie = fichier_selectionne.rsplit(".", 1)[0] + ".html"
 
 else:
     print("Choix invalide. Veuillez relancer et entrer un numéro de la liste.")
