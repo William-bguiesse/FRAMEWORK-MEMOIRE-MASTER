@@ -8,7 +8,7 @@ class Convertisseur:
 # le texte en markdown et le stocke dans l'attribut self.texte_markdown. 
 # pour l'instant, il ne se passe rien.
 
-    def convertion_en_html(self):
+    def conversion_en_html(self):
         conversion_html = markdown.markdown(self.texte_markdown)
         return conversion_html
 

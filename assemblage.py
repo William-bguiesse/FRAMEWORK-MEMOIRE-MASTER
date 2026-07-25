@@ -22,10 +22,23 @@ else:
 # 1. On demande le numéro
     choix = input("\nEntrez le numéro du fichier : ")
 
-    # 2. On vérifie si c'est un chiffre ET si ce chiffre est dans la liste
-    if choix.isdigit() and 1 <= int(choix) <= len(fichiers_valides):
-        fichier_selectionne = fichiers_valides[int(choix) - 1]
-        print(f"Fichier choisi : {fichier_selectionne}")
+    # 2. On modifie un peu le code pour s'assurer que la réponse de l'utilisateur soit bien d
+if choix.isdigit() and 1 <= int(choix) <= len(fichiers_valides):
+    fichier_selectionne = fichiers_valides[int(choix) - 1]
+    print(f"Fichier choisi : {fichier_selectionne}")
+    
+    # on va creer une variable "lecteur" qui va contenir le fichier selectionné par l'utilisateur 
+    # lors de la commande input précédemment utilisé.
+    lecteur = MarkdownReader(fichier_selectionne)
+    texte = lecteur.read_file()
+    # Avec le convertisseur du fichier convertisseur.py, on va pouvoir importer notre méthode
+    # qui nous permet la conversion du md en HTML.
+    convertisseur = Convertisseur(texte)
+    html = convertisseur.conversion_en_html()
 
-    else:
-        print("Choix invalide. Veuillez relancer et entrer un numéro de la liste.")
+# On affiche ici le résultat du fichier converti.
+    print("\n--- Résultat HTML ---")
+    print(html)
+
+else:
+    print("Choix invalide. Veuillez relancer et entrer un numéro de la liste.")
