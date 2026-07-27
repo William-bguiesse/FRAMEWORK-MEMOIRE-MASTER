@@ -46,6 +46,18 @@ if choix.isdigit() and 1 <= int(choix) <= len(fichiers_valides):
 # PUIS, AJOUTE ".html" A LA FIN DU MOT.
     nom_de_sortie = fichier_selectionne.rsplit(".", 1)[0] + ".html"
 
+    page_complete = f"""<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{fichier_selectionne.rsplit('.', 1)[0]}</title>
+</head>
+<body>
+{html}
+</body>
+</html>"""
+
     with open(nom_de_sortie, "w", encoding="utf-8") as f:
         f.write(html)
 
